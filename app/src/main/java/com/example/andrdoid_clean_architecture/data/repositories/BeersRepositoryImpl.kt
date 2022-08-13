@@ -6,6 +6,7 @@ import com.example.andrdoid_clean_architecture.domain.model.Beer
 import com.example.andrdoid_clean_architecture.domain.repositories.BeersRepository
 import javax.inject.Inject
 
+
 class BeersRepositoryImpl @Inject constructor(
     private val api: PunkApi
 ) : BeersRepository {
