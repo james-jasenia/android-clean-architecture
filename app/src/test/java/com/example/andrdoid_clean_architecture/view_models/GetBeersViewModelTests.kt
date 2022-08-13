@@ -1,4 +1,4 @@
-package com.example.andrdoid_clean_architecture
+package com.example.andrdoid_clean_architecture.view_models
 
 import com.example.andrdoid_clean_architecture.domain.model.Beer
 import com.example.andrdoid_clean_architecture.domain.use_cases.GetBeersUseCase

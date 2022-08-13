@@ -1,4 +1,4 @@
-package com.example.andrdoid_clean_architecture
+package com.example.andrdoid_clean_architecture.use_cases
 
 import com.example.andrdoid_clean_architecture.domain.model.Beer
 import com.example.andrdoid_clean_architecture.domain.repositories.BeersRepository

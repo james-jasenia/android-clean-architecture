@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.example.andrdoid_clean_architecture.domain.model.Beer
 import com.example.andrdoid_clean_architecture.domain.use_cases.GetBeersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onEach
@@ -18,6 +20,12 @@ class GetBeersViewModel @Inject constructor(
 
     private val _stateFlow = MutableStateFlow<List<Beer>>(emptyList())
     val stateFlow = _stateFlow.asStateFlow()
+
+    init {
+        GlobalScope.async {
+            getBeers()
+        }
+    }
 
     suspend fun getBeers() {
         val result = getBeersUseCase()

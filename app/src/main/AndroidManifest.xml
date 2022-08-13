@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Andrdoidcleanarchitecture">
         <activity
+            android:name=".presentation.get_beers.BeersListActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
