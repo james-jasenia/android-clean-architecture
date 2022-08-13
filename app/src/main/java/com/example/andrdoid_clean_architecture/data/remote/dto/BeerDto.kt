@@ -1,6 +1,7 @@
 package com.example.andrdoid_clean_architecture.data.remote.dto
 
 
+import com.example.andrdoid_clean_architecture.domain.model.Beer
 import com.google.gson.annotations.SerializedName
 
 data class BeerDto(
@@ -35,3 +36,12 @@ data class BeerDto(
     val targetOg: Int,
     val volume: VolumeDto
 )
+
+fun BeerDto.toBeer(): Beer {
+    return Beer(
+        name = name,
+        imageUrl = imageUrl,
+        description = description,
+        foodPairing = foodPairing
+    )
+}
