@@ -13,6 +13,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import retrofit2.HttpException
 import retrofit2.Response
+import java.io.IOException
 import kotlin.test.assertFailsWith
 
 
@@ -39,6 +40,20 @@ class GetBeersUseCaseTests {
         }"""
         val errorResponseBody = errorResponse.toResponseBody("application/json".toMediaTypeOrNull())
         val expectedResult = HttpException(Response.error<String>(400, errorResponseBody))
+        val mockRepository = mock<BeersRepository>()
+        whenever(mockRepository.getBeers()).then {
+            throw expectedResult
+        }
+
+        val sut = GetBeersUseCase(mockRepository)
+        var receivedError = sut.invoke().first().exceptionOrNull()
+
+        assertTrue(expectedResult == receivedError)
+    }
+
+    @Test
+    fun test_getBeers_returnIOExceptionError_onIOError() = runBlocking {
+        val expectedResult = IOException()
         val mockRepository = mock<BeersRepository>()
         whenever(mockRepository.getBeers()).then {
             throw expectedResult
