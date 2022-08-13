@@ -11,14 +11,14 @@ import javax.inject.Inject
 class GetBeersUseCase @Inject constructor(
     private val repository: BeersRepository
 ) {
-    operator fun invoke() : Flow<Result<List<Beer>>> = flow {
-        try {
+    suspend operator fun invoke() : Result<List<Beer>> {
+        return try {
             val beers = repository.getBeers()
-            emit(Result.success(beers))
+            Result.success(beers)
         } catch(error: IOException) {
-            emit(Result.failure(error))
+            Result.failure(error)
         } catch(error: HttpException) {
-            emit(Result.failure(error))
+            Result.failure(error)
         }
     }
 }

@@ -27,7 +27,7 @@ class GetBeersUseCaseTests {
         whenever(mockRepository.getBeers()).thenReturn(expectedResult)
 
         val sut = GetBeersUseCase(mockRepository)
-        val receivedResult = sut.invoke().first().getOrNull()
+        val receivedResult = sut.invoke().getOrNull()
 
         assertTrue(expectedResult == receivedResult)
     }
@@ -46,7 +46,7 @@ class GetBeersUseCaseTests {
         }
 
         val sut = GetBeersUseCase(mockRepository)
-        var receivedError = sut.invoke().first().exceptionOrNull()
+        var receivedError = sut.invoke().exceptionOrNull()
 
         assertTrue(expectedResult == receivedError)
     }
@@ -60,7 +60,7 @@ class GetBeersUseCaseTests {
         }
 
         val sut = GetBeersUseCase(mockRepository)
-        var receivedError = sut.invoke().first().exceptionOrNull()
+        var receivedError = sut.invoke().exceptionOrNull()
 
         assertTrue(expectedResult == receivedError)
     }
