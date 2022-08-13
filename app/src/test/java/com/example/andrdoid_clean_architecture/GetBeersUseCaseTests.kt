@@ -32,7 +32,7 @@ class GetBeersUseCaseTests {
     }
 
     @Test
-    fun test_getBeers_returnError_onError() = runBlocking {
+    fun test_getBeers_returnHttpExceptionError_onHttpError() = runBlocking {
         val errorResponse = """{
             "type": "error",
             "message": "anyMessage"
