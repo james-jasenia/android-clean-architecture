@@ -4,6 +4,7 @@ import android.provider.SyncStateContract
 import com.example.andrdoid_clean_architecture.data.remote.PunkApi
 import com.example.andrdoid_clean_architecture.data.repositories.BeersRepositoryImpl
 import com.example.andrdoid_clean_architecture.domain.repositories.BeersRepository
+import com.example.andrdoid_clean_architecture.domain.use_cases.GetBeersUseCase
 import com.example.andrdoid_clean_architecture.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -31,5 +32,11 @@ object AppModule {
     @Singleton
     fun provideBeersRepository(api: PunkApi) : BeersRepository {
         return BeersRepositoryImpl(api )
+    }
+
+    @Provides
+    @Singleton
+    fun providesGetBeersUseCase(repository: BeersRepository) : GetBeersUseCase {
+        return GetBeersUseCase(repository)
     }
 }

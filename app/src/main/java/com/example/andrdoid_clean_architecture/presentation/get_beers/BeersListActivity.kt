@@ -7,9 +7,7 @@ import com.example.andrdoid_clean_architecture.databinding.ActivityBeersListBind
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
-class BeersListActivity @Inject constructor(
-    private val viewModel: GetBeersViewModel
-) : AppCompatActivity() {
+class BeersListActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityBeersListBinding
 
@@ -17,14 +15,14 @@ class BeersListActivity @Inject constructor(
         super.onCreate(savedInstanceState)
         binding = ActivityBeersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupBindings()
+//        setupBindings()
     }
 
-    private fun setupBindings() {
-        lifecycleScope.launchWhenCreated {
-            viewModel.stateFlow.collectLatest {
-                binding.beerTextView.text = it.first().name
-            }
-        }
-    }
+//    private fun setupBindings() {
+//        lifecycleScope.launchWhenCreated {
+//            viewModel.stateFlow.collectLatest {
+//                binding.beerTextView.text = it.first().name
+//            }
+//        }
+//    }
 }
