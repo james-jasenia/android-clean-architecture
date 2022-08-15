@@ -31,25 +31,24 @@ class GetBeersUseCaseTests {
 
         assertTrue(expectedResult == receivedResult)
     }
-//
-//    @Test
-//    fun test_getBeers_returnHttpExceptionError_onHttpError() = runBlocking {
-//        val errorResponse = """{
-//            "type": "error",
-//            "message": "anyMessage"
-//        }"""
-//        val errorResponseBody = errorResponse.toResponseBody("application/json".toMediaTypeOrNull())
-//        val expectedResult = HttpException(Response.error<String>(400, errorResponseBody))
-//        val mockRepository = mock<BeersRepository>()
-//        whenever(mockRepository.getBeers()).then {
-//            throw expectedResult
-//        }
-//
-//        val sut = GetBeersUseCase(mockRepository)
-//        var receivedError = sut.invoke().exceptionOrNull()
-//
-//        assertTrue(expectedResult == receivedError)
-//    }
+
+    @Test
+    fun test_getBeers_returnHttpExceptionError_onHttpError() = runBlocking {
+        val errorResponse = """{
+            "type": "error",
+            "message": "anyMessage"
+        }"""
+        val errorResponseBody = errorResponse.toResponseBody("application/json".toMediaTypeOrNull())
+        val exception = HttpException(Response.error<String>(400, errorResponseBody))
+        val expectedResult = Result.failure<List<Beer>>(exception)
+        val mockRepository = mock<BeersRepository>()
+        whenever(mockRepository.getBeers()).thenReturn(expectedResult)
+
+        val sut = GetBeersUseCase(mockRepository)
+        var receivedError = sut.invoke()
+
+        assertTrue(expectedResult == receivedError)
+    }
 //
 //    @Test
 //    fun test_getBeers_returnIOExceptionError_onIOError() = runBlocking {
