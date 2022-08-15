@@ -49,18 +49,17 @@ class GetBeersUseCaseTests {
 
         assertTrue(expectedResult == receivedError)
     }
-//
-//    @Test
-//    fun test_getBeers_returnIOExceptionError_onIOError() = runBlocking {
-//        val expectedResult = IOException()
-//        val mockRepository = mock<BeersRepository>()
-//        whenever(mockRepository.getBeers()).then {
-//            throw expectedResult
-//        }
-//
-//        val sut = GetBeersUseCase(mockRepository)
-//        var receivedError = sut.invoke().exceptionOrNull()
-//
-//        assertTrue(expectedResult == receivedError)
-//    }
+
+    @Test
+    fun test_getBeers_returnIOExceptionError_onIOError() = runBlocking {
+        val exception = IOException()
+        val expectedResult = Result.failure<List<Beer>>(exception)
+        val mockRepository = mock<BeersRepository>()
+        whenever(mockRepository.getBeers()).thenReturn(expectedResult)
+
+        val sut = GetBeersUseCase(mockRepository)
+        var receivedError = sut.invoke()
+
+        assertTrue(expectedResult == receivedError)
+    }
 }
