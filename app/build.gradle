@@ -37,8 +37,8 @@ android {
 }
 
 ext {
-    coroutines = "1.5.2"
-    kotlinVersion = "1.7.10"
+    coroutines = "1.6.4"
+    kotlinVersion = "1.7.1"
 }
 
 
