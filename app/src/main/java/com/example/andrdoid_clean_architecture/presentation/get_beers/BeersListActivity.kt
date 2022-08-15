@@ -7,7 +7,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.andrdoid_clean_architecture.databinding.ActivityBeersListBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class BeersListActivity: AppCompatActivity() {

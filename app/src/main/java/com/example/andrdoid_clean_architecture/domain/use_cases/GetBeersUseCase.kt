@@ -12,13 +12,6 @@ class GetBeersUseCase @Inject constructor(
     private val repository: BeersRepository
 ) {
     suspend operator fun invoke() : Result<List<Beer>> {
-        return try {
-            val beers = repository.getBeers()
-            Result.success(beers)
-        } catch(error: IOException) {
-            Result.failure(error)
-        } catch(error: HttpException) {
-            Result.failure(error)
-        }
+        return repository.getBeers()
     }
 }

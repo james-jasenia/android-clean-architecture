@@ -11,6 +11,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,7 +23,7 @@ class GetBeersViewModel @Inject constructor(
     val stateFlow = _stateFlow.asStateFlow()
 
     init {
-        GlobalScope.async {
+        GlobalScope.launch {
             getBeers()
         }
     }
