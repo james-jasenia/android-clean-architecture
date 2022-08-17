@@ -15,7 +15,7 @@
 - Mockito
 
 
-### TODO:
+### TODO (Code):
 - [ ] Inject Dispatchers
 - [ ] Integrate Truth into all Unit Test
 - [ ] Integrate Turbine into Coroutine/Flow tets.
@@ -27,3 +27,10 @@
 ### TODO (Curiosity):
 - [ ] Play around with UI testing
 - [ ] Modularise the project like you would in iOS
+
+
+### TODO (Documentation):
+- [ ] Coroutines
+- [ ] Dispatchers
+- [ ] Hilt
+- [ ] Retrofit
