@@ -22,6 +22,8 @@
 - [ ] Create List UI
 - [ ] Create detail UI
 - [ ] Implement MockWebServer to Unit Test Retrofit API calls
+- [ ] Cache - Room
+- [ ] PrimaryWithFallbackComposite
 
 
 ### TODO (Curiosity):
@@ -34,3 +36,5 @@
 - [ ] Dispatchers
 - [ ] Hilt
 - [ ] Retrofit
+- [ ] Mocito/Truth/Turbine
+- [ ] Room
