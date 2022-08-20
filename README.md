@@ -16,7 +16,7 @@
 
 
 ### TODO (Code):
-- [ ] Inject Dispatchers
+- [x] Inject Dispatchers
 - [ ] Integrate Truth into all Unit Test
 - [ ] Integrate Turbine into Coroutine/Flow tets.
 - [ ] Create List UI
