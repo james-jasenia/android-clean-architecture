@@ -32,7 +32,7 @@
 
 
 ### TODO (Documentation):
-- [ ] Coroutines
+- [x] Coroutines
 - [ ] Dispatchers
 - [ ] Hilt
 - [ ] Retrofit
