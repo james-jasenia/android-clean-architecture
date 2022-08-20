@@ -24,21 +24,23 @@ class GetBeersViewModel @Inject constructor(
     val stateFlow = _stateFlow.asStateFlow()
 
     init {
-        viewModelScope.launch(dispatchers.io) {
-            getBeers()
-        }
+        getBeers()
     }
 
-    suspend fun getBeers() {
-        val result = getBeersUseCase()
-        result.fold(
-            onFailure = {
-                _stateFlow.value = GetBeersViewState.Failure("Generic Network Error.")
-            },
-            onSuccess = {
-                _stateFlow.value = GetBeersViewState.Success(it)
+    private fun getBeers() {
+        viewModelScope.launch(dispatchers.io) {
+            val result = getBeersUseCase()
+            withContext(dispatchers.main) {
+                result.fold(
+                    onFailure = {
+                        _stateFlow.value = GetBeersViewState.Failure("Generic Network Error.")
+                    },
+                    onSuccess = {
+                        _stateFlow.value = GetBeersViewState.Success(it)
+                    }
+                )
             }
-        )
+        }
     }
 }
 
