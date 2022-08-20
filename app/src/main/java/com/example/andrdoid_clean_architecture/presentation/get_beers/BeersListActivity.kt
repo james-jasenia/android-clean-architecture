@@ -27,7 +27,14 @@ class BeersListActivity: AppCompatActivity() {
     private fun setupBindings() {
         lifecycleScope.launchWhenCreated {
             viewModel.stateFlow.collectLatest {
-                binding.beerTextView.text = it.firstOrNull()?.name
+                when(it) {
+                    is GetBeersViewState.Success ->
+                        binding.beerTextView.text =  it.beers.firstOrNull()?.name
+                    is GetBeersViewState.Failure ->
+                        binding.beerTextView.text = it.errorMessage
+                    is GetBeersViewState.Loading ->
+                        binding.beerTextView.text = "Loading"
+                }
             }
         }
     }

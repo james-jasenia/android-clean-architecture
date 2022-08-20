@@ -6,6 +6,8 @@ import com.example.andrdoid_clean_architecture.data.repositories.BeersRepository
 import com.example.andrdoid_clean_architecture.domain.repositories.BeersRepository
 import com.example.andrdoid_clean_architecture.domain.use_cases.GetBeersUseCase
 import com.example.andrdoid_clean_architecture.utils.Constants
+import com.example.andrdoid_clean_architecture.utils.DispatcherProvider
+import com.example.andrdoid_clean_architecture.utils.StandardDispatchers
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,4 +41,11 @@ object AppModule {
     fun providesGetBeersUseCase(repository: BeersRepository) : GetBeersUseCase {
         return GetBeersUseCase(repository)
     }
+
+    @Provides
+    @Singleton
+    fun providesStandardDispatchers() : DispatcherProvider {
+        return StandardDispatchers()
+    }
+
 }
