@@ -9,6 +9,7 @@ import com.example.andrdoid_clean_architecture.presentation.get_beers.GetBeersVi
 import com.example.andrdoid_clean_architecture.presentation.get_beers.GetBeersViewState
 import hilt_aggregated_deps._com_example_andrdoid_clean_architecture_presentation_get_beers_GetBeersViewModel_HiltModules_BindsModule
 import junit.framework.Assert.assertTrue
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
@@ -33,15 +34,9 @@ class GetBeersViewModelTests {
         val mockUseCase = mock<GetBeersUseCase>()
 
         val sut = GetBeersViewModel(mockUseCase, TestDispatchers())
-        val results = mutableListOf<GetBeersViewState>()
+        val receivedResult = sut.stateFlow.first()
 
-        val job = launch {
-            sut.stateFlow.toList(results)
-        }
-
-
-        assertTrue(results[0] == expectedResult)
-        job.cancel()
+        assertTrue(receivedResult == expectedResult)
     }
 
     @Test
