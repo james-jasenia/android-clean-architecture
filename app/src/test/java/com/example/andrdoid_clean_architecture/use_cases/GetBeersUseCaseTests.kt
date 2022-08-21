@@ -3,6 +3,7 @@ package com.example.andrdoid_clean_architecture.use_cases
 import com.example.andrdoid_clean_architecture.domain.model.Beer
 import com.example.andrdoid_clean_architecture.domain.repositories.BeersRepository
 import com.example.andrdoid_clean_architecture.domain.use_cases.GetBeersUseCase
+import com.google.common.truth.Truth.assertThat
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -29,7 +30,7 @@ class GetBeersUseCaseTests {
         val sut = GetBeersUseCase(mockRepository)
         val receivedResult = sut.invoke()
 
-        assertTrue(expectedResult == receivedResult)
+        assertThat(receivedResult).isEqualTo(expectedResult)
     }
 
     @Test
@@ -46,8 +47,7 @@ class GetBeersUseCaseTests {
 
         val sut = GetBeersUseCase(mockRepository)
         var receivedError = sut.invoke()
-
-        assertTrue(expectedResult == receivedError)
+        assertThat(receivedError).isEqualTo(expectedResult)
     }
 
     @Test
@@ -60,6 +60,6 @@ class GetBeersUseCaseTests {
         val sut = GetBeersUseCase(mockRepository)
         var receivedError = sut.invoke()
 
-        assertTrue(expectedResult == receivedError)
+        assertThat(receivedError).isEqualTo(expectedResult)
     }
 }
