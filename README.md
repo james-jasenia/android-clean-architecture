@@ -18,7 +18,7 @@
 ### TODO (Code):
 - [x] Inject Dispatchers
 - [ ] Integrate Truth into all Unit Test
-- [ ] Integrate Turbine into Coroutine/Flow tets.
+- [x] Integrate Turbine into Coroutine/Flow tets.
 - [ ] Create List UI
 - [ ] Create detail UI
 - [ ] Implement MockWebServer to Unit Test Retrofit API calls
