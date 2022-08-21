@@ -22,12 +22,10 @@ import kotlin.test.assertEquals
 
 class GetBeersViewModelTests {
 
-    @get:Rule
-    val instantTaskRule = InstantTaskExecutorRule()
+    private val testDispatchers = TestDispatchers()
 
     @Test
     fun test_init_state_isLoading() = runTest {
-        val testDispatchers = TestDispatchers()
         val expectedResult = GetBeersViewState.Loading
         val mockUseCase = mock<GetBeersUseCase>()
 
@@ -39,7 +37,6 @@ class GetBeersViewModelTests {
 
     @Test
     fun test_getBeers_propagatesBeersList_toStateFlow_onSuccess() = runTest {
-        val testDispatchers = TestDispatchers()
         val beer = Beer("anyName", "anyImageUrl", "anyDescription", emptyList())
         val expectedResult = listOf(beer, beer)
         val mockUseCase = mock<GetBeersUseCase>()
