@@ -45,8 +45,8 @@ class GetBeersViewModel @Inject constructor(
 }
 
 sealed class GetBeersViewState {
-    class Success(val beers: List<Beer>) : GetBeersViewState()
-    class Failure(val errorMessage: String) : GetBeersViewState()
+    data class Success(val beers: List<Beer>) : GetBeersViewState()
+    data class Failure(val errorMessage: String) : GetBeersViewState()
     object Loading : GetBeersViewState()
 }
 

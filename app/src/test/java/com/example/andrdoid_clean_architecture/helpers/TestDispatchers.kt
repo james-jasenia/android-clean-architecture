@@ -3,14 +3,17 @@ package com.example.andrdoid_clean_architecture.helpers
 import com.example.andrdoid_clean_architecture.utils.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 
 class TestDispatchers : DispatcherProvider {
+    val testDispatchers = TestCoroutineDispatcher()
+
     override val main: CoroutineDispatcher
-        get() = StandardTestDispatcher()
+        get() = testDispatchers
     override val io: CoroutineDispatcher
-        get() = StandardTestDispatcher()
+        get() = testDispatchers
     override val default: CoroutineDispatcher
-        get() = StandardTestDispatcher()
+        get() = testDispatchers
     override val unconfined: CoroutineDispatcher
-        get() = StandardTestDispatcher()
+        get() = testDispatchers
 }
