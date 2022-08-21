@@ -33,8 +33,8 @@
 
 ### TODO (Documentation):
 - [x] Coroutines
-- [ ] Dispatchers
+- [x] Dispatchers
 - [ ] Hilt
-- [ ] Retrofit
+- [x] Retrofit
 - [ ] Mocito/Truth/Turbine
 - [ ] Room
