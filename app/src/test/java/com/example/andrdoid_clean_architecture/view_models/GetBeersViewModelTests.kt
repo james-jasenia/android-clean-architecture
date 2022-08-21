@@ -1,7 +1,5 @@
 package com.example.andrdoid_clean_architecture.view_models
 
-import android.util.Log
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import app.cash.turbine.test
 import com.example.andrdoid_clean_architecture.domain.model.Beer
 import com.example.andrdoid_clean_architecture.domain.use_cases.GetBeersUseCase
@@ -9,15 +7,11 @@ import com.example.andrdoid_clean_architecture.helpers.TestDispatchers
 import com.example.andrdoid_clean_architecture.presentation.get_beers.GetBeersViewModel
 import com.example.andrdoid_clean_architecture.presentation.get_beers.GetBeersViewState
 import com.google.common.truth.Truth.assertThat
-import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
-import org.junit.Rule
 import org.junit.Test
-import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import kotlin.test.assertEquals
 
 
 class GetBeersViewModelTests {
@@ -32,7 +26,7 @@ class GetBeersViewModelTests {
         val sut = GetBeersViewModel(mockUseCase, testDispatchers)
         val receivedResult = sut.stateFlow.first()
 
-        assertTrue(receivedResult == expectedResult)
+        assertThat(receivedResult).isEqualTo(expectedResult)
     }
 
     @Test

@@ -4,8 +4,6 @@ import com.example.andrdoid_clean_architecture.domain.model.Beer
 import com.example.andrdoid_clean_architecture.domain.repositories.BeersRepository
 import com.example.andrdoid_clean_architecture.domain.use_cases.GetBeersUseCase
 import com.google.common.truth.Truth.assertThat
-import junit.framework.Assert.assertTrue
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody.Companion.toResponseBody
@@ -15,7 +13,6 @@ import org.mockito.kotlin.whenever
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
-import kotlin.test.assertFailsWith
 
 
 class GetBeersUseCaseTests {
