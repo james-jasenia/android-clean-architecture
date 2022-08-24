@@ -47,5 +47,4 @@ object AppModule {
     fun providesStandardDispatchers() : DispatcherProvider {
         return StandardDispatchers()
     }
-
 }
