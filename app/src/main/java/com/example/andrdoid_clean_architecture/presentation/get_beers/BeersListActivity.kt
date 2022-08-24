@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.view.menu.MenuView
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.andrdoid_clean_architecture.R
 import com.example.andrdoid_clean_architecture.databinding.ActivityBeersListBinding
 import com.example.andrdoid_clean_architecture.domain.model.Beer
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collectLatest
@@ -62,16 +64,23 @@ class BeersListActivity: AppCompatActivity() {
 }
 
 data class BeerCellModel(
-    val title: String
+    val title: String,
+    val imageUrl: String
 )
 
 class BeerListAdapter: ListAdapter<BeerCellModel, BeerListAdapter.BeerViewHolder>(BeerDiffCallback) {
 
     class BeerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val heading = itemView.findViewById<TextView>(R.id.headingTextView)
+        private val imageView = itemView.findViewById<ImageView>(R.id.beerImageView)
 
         fun bind(model: BeerCellModel) {
             heading.text = model.title
+            Picasso.get()
+                .load(model.imageUrl)
+                .resize(50, 50)
+                .centerCrop()
+                .into(imageView)
         }
     }
 
