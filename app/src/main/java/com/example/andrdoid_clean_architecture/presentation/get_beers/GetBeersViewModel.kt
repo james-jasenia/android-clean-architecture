@@ -35,8 +35,9 @@ class GetBeersViewModel @Inject constructor(
                     onFailure = {
                         _stateFlow.value = GetBeersViewState.Failure("Generic Network Error.")
                     },
-                    onSuccess = {
-                        _stateFlow.value = GetBeersViewState.Success(it)
+                    onSuccess = { beer ->
+                        val cellModels = beer.map { it -> BeerCellModel(it.name) }
+                        _stateFlow.value = GetBeersViewState.Success(cellModels)
                     }
                 )
             }
@@ -45,7 +46,7 @@ class GetBeersViewModel @Inject constructor(
 }
 
 sealed class GetBeersViewState {
-    data class Success(val beers: List<Beer>) : GetBeersViewState()
+    data class Success(val beers: List<BeerCellModel>) : GetBeersViewState()
     data class Failure(val errorMessage: String) : GetBeersViewState()
     object Loading : GetBeersViewState()
 }

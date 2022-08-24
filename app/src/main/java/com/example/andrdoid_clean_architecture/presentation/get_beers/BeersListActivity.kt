@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.view.menu.MenuView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -33,6 +34,7 @@ class BeersListActivity: AppCompatActivity() {
         binding = ActivityBeersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupBindings()
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     private fun setupBindings() {
@@ -40,14 +42,22 @@ class BeersListActivity: AppCompatActivity() {
             viewModel.stateFlow.collectLatest {
                 when(it) {
                     is GetBeersViewState.Success ->
-//                        binding.recyclerView.adapter =
+                        binding.recyclerView.adapter = constructBeerListAdapter(it.beers as MutableList)
                     is GetBeersViewState.Failure ->
+                        Log.d("d", "d")
 //                        binding.beerTextView.text = it.errorMessage
                     is GetBeersViewState.Loading ->
+                        Log.d("d", "d")
 //                        binding.beerTextView.text = "Loading"
                 }
             }
         }
+    }
+
+    private fun constructBeerListAdapter(list: MutableList<BeerCellModel>): BeerListAdapter {
+        val adapter = BeerListAdapter()
+        adapter.submitList(list)
+        return adapter
     }
 }
 
@@ -60,7 +70,7 @@ class BeerListAdapter: ListAdapter<BeerCellModel, BeerListAdapter.BeerViewHolder
     class BeerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val heading = itemView.findViewById<TextView>(R.id.headingTextView)
 
-        fun configure(model: BeerCellModel) {
+        fun bind(model: BeerCellModel) {
             heading.text = model.title
         }
     }
@@ -73,7 +83,7 @@ class BeerListAdapter: ListAdapter<BeerCellModel, BeerListAdapter.BeerViewHolder
 
     override fun onBindViewHolder(holder: BeerViewHolder, position: Int) {
         var beer = getItem(position)
-        holder.configure(beer)
+        holder.bind(beer)
     }
 }
 
