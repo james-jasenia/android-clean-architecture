@@ -13,13 +13,15 @@
 - Hilt
 - ViewBinding
 - Mockito
+- Room
+- Picasso
 
 
 ### TODO (Code):
 - [x] Inject Dispatchers
 - [x] Integrate Truth into all Unit Test
 - [x] Integrate Turbine into Coroutine/Flow tets.
-- [ ] Create List UI
+- [x] Create List UI
 - [ ] Create detail UI
 - [ ] Implement MockWebServer to Unit Test Retrofit API calls
 - [ ] Cache - Room
@@ -38,3 +40,4 @@
 - [x] Retrofit
 - [ ] Mocito/Truth/Turbine
 - [ ] Room
+- [ ] Picasso
