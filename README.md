@@ -26,6 +26,7 @@
 - [ ] Implement MockWebServer to Unit Test Retrofit API calls
 - [ ] Cache - Room
 - [ ] PrimaryWithFallbackComposite
+- [ ] Finishing UI touches
 
 
 ### TODO (Curiosity):
