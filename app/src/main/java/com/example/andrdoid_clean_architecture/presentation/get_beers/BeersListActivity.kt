@@ -11,10 +11,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.view.menu.MenuView
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.andrdoid_clean_architecture.R
 import com.example.andrdoid_clean_architecture.databinding.ActivityBeersListBinding
@@ -35,8 +32,16 @@ class BeersListActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBeersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupView()
         setupBindings()
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun setupView() {
+        val layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = layoutManager
+
+        val divider = DividerItemDecoration(binding.recyclerView.context, layoutManager.orientation)
+        binding.recyclerView.addItemDecoration(divider)
     }
 
     private fun setupBindings() {

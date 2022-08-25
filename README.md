@@ -22,6 +22,7 @@
 - [x] Integrate Truth into all Unit Test
 - [x] Integrate Turbine into Coroutine/Flow tets.
 - [x] Create List UI
+- [ ] Drawables (application can be dividers between cells)
 - [ ] Create detail UI
 - [ ] Implement MockWebServer to Unit Test Retrofit API calls
 - [ ] Cache - Room
@@ -41,4 +42,5 @@
 - [x] Retrofit
 - [ ] Mocito/Truth/Turbine
 - [ ] Room
-- [ ] Picasso
+- [x] Picasso
+- [ ] Drawables
