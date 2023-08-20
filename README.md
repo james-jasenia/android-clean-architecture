@@ -2,7 +2,7 @@
 
 ### Architecture:
 - API
-- Repoistory
+- Repositories
 - UseCase
 - ViewModel
 - View
